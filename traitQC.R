@@ -46,6 +46,13 @@ if(action == "--asthma"){
         e <- d[,c(1,1,3:18)]
         names(e)[2] <- "FID"
         fwrite(e,paste(name,'_dis_raw.txt',sep=""),quote=F,sep='\t',row.names=F,na="NA")
-        }
+        
+        pheno <- e[,c(1,1,18)]
+        names(pheno)[2] <- "IID"
+        cov <- e[,c(1:16)]
+        names(cov)[2] <- "IID"
+        fwrite(pheno,paste(name,'_dis.pheno',sep=""),quote=F,sep='\t',row.names=F,na="NA")
+        fwrite(cov,paste(name,'_dis.cov',sep=""),quote=F,sep='\t',row.names=F,na="NA")
+}
 else{print("option error")}
         
