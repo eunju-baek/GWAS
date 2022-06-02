@@ -24,6 +24,7 @@ if(action == "--asthma"){
         names(c)[1] <- "asthma_eid"
         d <- left_join(a,c,by="asthma_eid")
         d <- na.omit(d)
+        d <- d[d[,17]>=0,]
         d$bt <-  ifelse(d[,17]==case_code,1,0)
         e <- d[,c(1,1,3:18)]
         names(e)[2] <- "FID"
@@ -41,6 +42,7 @@ if(action == "--asthma"){
         names(c)[1] <- "FID"
         d <- left_join(a,c,by="FID")
         d <- na.omit(d)
+        d <- d[d[,17]>=0,]
         d$bt <-  ifelse(d[,17]==case_code,1,0)
         e <- d[,c(1,1,3:18)]
         names(e)[2] <- "IID"
